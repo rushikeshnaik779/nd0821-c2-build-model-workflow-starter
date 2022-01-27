@@ -34,6 +34,9 @@ def go(args):
     max_price = args.max_price 
     idx = dataframe['price'].between(min_price, max_price)
     dataframe = dataframe[idx].copy()
+
+    idx = dataframe['longitude'].between(-74.25, -73.50) & dataframe['latitude'].between(40.5, 41.2)
+    dataframe = dataframe[idx].copy()
     logger.info(f"Dataset price outliers removal outside range: {min_price} - {max_price}")
 
 
